@@ -1,0 +1,52 @@
+# Build
+bin/
+obj/
+
+# User files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# VSCode
+.vscode/
+
+# Visual Studio
+.vs/
+
+# Rider
+.idea/
+
+# Node modules (caso use futuramente)
+node_modules/
+
+# Environment variables
+.env
+
+# Publish folder
+publish/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# ASP.NET secrets
+secrets.json
+appsettings.Development.json
+
+# EF Core migrations snapshot temporário
+*.db
+
+# Coverage
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+
+# NuGet packages
+*.nupkg
+packages/
