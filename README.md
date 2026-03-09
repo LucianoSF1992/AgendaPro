@@ -2,6 +2,7 @@
 ![.NET](https://img.shields.io/badge/.NET-9-blue)
 ![C#](https://img.shields.io/badge/C%23-Backend-green)
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-Database-red)
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
 
 Sistema web para gerenciamento de agendamentos de serviços, desenvolvido com **.NET, C# e SQL Server**.
 
@@ -65,10 +66,6 @@ Permitir que uma empresa ou profissional organize seus agendamentos de serviços
 
 🚧 Em desenvolvimento
 
-Módulos concluídos:
-
-- ✅ Estrutura inicial do projeto
-
 ---
 
 # 🚀 Como executar o projeto
@@ -105,27 +102,37 @@ AgendaPro
 ├── wwwroot
 └── Program.cs
 
-📌 Roadmap do Projeto
+# 📌 Roadmap do Projeto
 
- Estrutura inicial
+## 🚧 Etapa 1 — Estrutura inicial
+- [x] Estrutura inicial do projeto
+- [ ] Configuração do banco de dados
+- [ ] Sistema de autenticação
 
- Configuração do banco de dados
+## 📋 Etapa 2 — Cadastros
+- [ ] Cadastro de clientes
+- [ ] Cadastro de serviços
+- [ ] Cadastro de profissionais
 
- Sistema de autenticação
+## 📅 Etapa 3 — Agendamentos
+- [ ] Criação de agendamentos
+- [ ] Controle de conflito de horários
+- [ ] Atualização de status
 
- Cadastro de clientes
+## 📊 Etapa 4 — Dashboard
+- [ ] Visualização diária
+- [ ] Filtro por profissional
+- [ ] Estatísticas de atendimentos
 
- Cadastro de serviços
+## 🕘 Etapa 5 — Histórico
+- [ ] Histórico de agendamentos
+- [ ] Filtros por cliente
+- [ ] Filtros por profissional
 
- Cadastro de profissionais
-
- Agendamentos
-
- Dashboard
-
- Histórico
-
- Deploy
+## 🚀 Etapa 6 — Deploy
+- [ ] Deploy na Hostinger
+- [ ] Configuração de subdomínio
+- [ ] Configuração de banco em produção
 
 
 🌐 Deploy
