@@ -2,6 +2,7 @@ using AgendaPro.Data;
 using AgendaPro.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using AgendaPro.Data.Seed;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,5 +38,10 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    await IdentitySeeder.SeedRolesAndUsersAsync(services);
+}
 
 app.Run();
