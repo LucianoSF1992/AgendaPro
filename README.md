@@ -107,7 +107,7 @@ AgendaPro
 ## 🚧 Etapa 1 — Estrutura inicial
 - [x] Estrutura inicial do projeto
 - [x] Configuração do banco de dados
-- [ ] Sistema de autenticação
+- [x] Sistema de autenticação
 
 ## 📋 Etapa 2 — Cadastros
 - [ ] Cadastro de clientes

@@ -14,8 +14,7 @@ namespace AgendaPro.Data.Seed
 
             foreach (var role in roles)
             {
-                var roleExists = await roleManager.RoleExistsAsync(role);
-                if (!roleExists)
+                if (!await roleManager.RoleExistsAsync(role))
                 {
                     await roleManager.CreateAsync(new IdentityRole(role));
                 }
@@ -35,12 +34,18 @@ namespace AgendaPro.Data.Seed
                     EmailConfirmed = true
                 };
 
-                var result = await userManager.CreateAsync(adminUser, "admin");
+                var createAdminResult = await userManager.CreateAsync(adminUser, "admin");
 
-                if (result.Succeeded)
+                if (!createAdminResult.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(adminUser, "Admin");
+                    throw new Exception("Erro ao criar usuário admin: " +
+                        string.Join(", ", createAdminResult.Errors.Select(e => e.Description)));
                 }
+            }
+
+            if (!await userManager.IsInRoleAsync(adminUser, "Admin"))
+            {
+                await userManager.AddToRoleAsync(adminUser, "Admin");
             }
 
             var profissionalEmail = "profissional@agenda.com";
@@ -58,12 +63,18 @@ namespace AgendaPro.Data.Seed
                     EmailConfirmed = true
                 };
 
-                var result = await userManager.CreateAsync(profissionalUser, "123456");
+                var createProfissionalResult = await userManager.CreateAsync(profissionalUser, "123456");
 
-                if (result.Succeeded)
+                if (!createProfissionalResult.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(profissionalUser, "Profissional");
+                    throw new Exception("Erro ao criar usuário profissional: " +
+                        string.Join(", ", createProfissionalResult.Errors.Select(e => e.Description)));
                 }
+            }
+
+            if (!await userManager.IsInRoleAsync(profissionalUser, "Profissional"))
+            {
+                await userManager.AddToRoleAsync(profissionalUser, "Profissional");
             }
         }
     }
