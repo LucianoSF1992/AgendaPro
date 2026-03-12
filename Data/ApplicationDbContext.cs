@@ -11,5 +11,7 @@ namespace AgendaPro.Data
             : base(options)
         {
         }
+
+        public DbSet<Cliente> Clientes { get; set; }
     }
 }

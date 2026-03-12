@@ -110,7 +110,7 @@ AgendaPro
 - [x] Sistema de autenticação
 
 ## 📋 Etapa 2 — Cadastros
-- [ ] Cadastro de clientes
+- [X] Cadastro de clientes
 - [ ] Cadastro de serviços
 - [ ] Cadastro de profissionais
 
