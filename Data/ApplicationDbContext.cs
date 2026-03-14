@@ -13,5 +13,7 @@ namespace AgendaPro.Data
         }
 
         public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Servico> Servicos { get; set; }
+
     }
 }

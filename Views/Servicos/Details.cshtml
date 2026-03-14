@@ -1,0 +1,26 @@
+@model AgendaPro.Models.Servico
+
+@{
+    ViewData["Title"] = "Detalhes do Serviço";
+}
+
+<div class="container py-4">
+    <h1 class="mb-4">Detalhes do Serviço</h1>
+
+    <dl class="row">
+        <dt class="col-sm-3">Nome</dt>
+        <dd class="col-sm-9">@Model.Nome</dd>
+
+        <dt class="col-sm-3">Duração</dt>
+        <dd class="col-sm-9">@Model.DuracaoEmMinutos min</dd>
+
+        <dt class="col-sm-3">Valor padrão</dt>
+        <dd class="col-sm-9">@Model.ValorPadrao.ToString("C")</dd>
+
+        <dt class="col-sm-3">Observações</dt>
+        <dd class="col-sm-9">@Model.Observacoes</dd>
+    </dl>
+
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+</div>

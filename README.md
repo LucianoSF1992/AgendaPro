@@ -111,7 +111,7 @@ AgendaPro
 
 ## 📋 Etapa 2 — Cadastros
 - [X] Cadastro de clientes
-- [ ] Cadastro de serviços
+- [X] Cadastro de serviços
 - [ ] Cadastro de profissionais
 
 ## 📅 Etapa 3 — Agendamentos
