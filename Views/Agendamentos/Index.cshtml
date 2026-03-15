@@ -2,6 +2,10 @@
 
 @{
     ViewData["Title"] = "Agendamentos";
+    var agendamentosPorData = Model
+        .OrderBy(a => a.Data)
+        .ThenBy(a => a.HoraInicio)
+        .GroupBy(a => a.Data.Date);
 }
 
 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -11,37 +15,58 @@
 
 @if (TempData["Sucesso"] != null)
 {
-    <div class="alert alert-success">@TempData["Sucesso"]</div>
+    <div class="alert alert-success">
+        @TempData["Sucesso"]
+    </div>
 }
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Data</th>
-            <th>Hora</th>
-            <th>Cliente</th>
-            <th>Serviço</th>
-            <th>Profissional</th>
-            <th>Status</th>
-            <th style="width: 220px;">Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Data.ToString("dd/MM/yyyy")</td>
-                <td>@item.HoraInicio.ToString(@"hh\:mm") - @item.HoraFim.ToString(@"hh\:mm")</td>
-                <td>@item.Cliente.Nome</td>
-                <td>@item.Servico.Nome</td>
-                <td>@(item.Profissional.NomeCompleto ?? item.Profissional.Email)</td>
-                <td>@item.Status</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info text-white">Detalhes</a>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Editar</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Excluir</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        Nenhum agendamento cadastrado.
+    </div>
+}
+else
+{
+    @foreach (var grupo in agendamentosPorData)
+    {
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-light">
+                <h5 class="mb-0">@grupo.Key.ToString("dddd, dd/MM/yyyy")</h5>
+            </div>
+
+            <div class="card-body p-0">
+                <table class="table table-striped mb-0">
+                    <thead>
+                        <tr>
+                            <th>Hora</th>
+                            <th>Cliente</th>
+                            <th>Serviço</th>
+                            <th>Profissional</th>
+                            <th>Status</th>
+                            <th style="width: 220px;">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in grupo)
+                        {
+                            <tr>
+                                <td>@item.HoraInicio.ToString(@"hh\:mm") - @item.HoraFim.ToString(@"hh\:mm")</td>
+                                <td>@item.Cliente.Nome</td>
+                                <td>@item.Servico.Nome</td>
+                                <td>@(item.Profissional.NomeCompleto ?? item.Profissional.Email)</td>
+                                <td>@item.Status</td>
+                                <td>
+                                    <a asp-action="Details" asp-route-id="@item.Id"
+                                       class="btn btn-sm btn-info text-white">Detalhes</a>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Editar</a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Excluir</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+}
