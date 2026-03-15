@@ -17,7 +17,8 @@ namespace AgendaPro.ViewModels
 
         [Required]
         [Display(Name = "Profissional")]
-        public int ProfissionalId { get; set; }
+        public string ProfissionalId { get; set; } = string.Empty;
+
 
         [Required]
         [DataType(DataType.Date)]

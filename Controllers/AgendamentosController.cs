@@ -33,7 +33,8 @@ namespace AgendaPro.Controllers
 
         public async Task<IActionResult> Create()
         {
-            var vm = await MontarViewModelAsync(new AgendamentoFormViewModel());
+            var vm = new AgendamentoFormViewModel();
+            await CarregarCombosAsync(vm);
             return View(vm);
         }
 
@@ -76,10 +77,112 @@ namespace AgendaPro.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private async Task<AgendamentoFormViewModel> MontarViewModelAsync(AgendamentoFormViewModel vm)
+        public async Task<IActionResult> Edit(int id)
         {
+            var agendamento = await _context.Agendamentos.FindAsync(id);
+            if (agendamento == null)
+                return NotFound();
+
+            var vm = new AgendamentoFormViewModel
+            {
+                Id = agendamento.Id,
+                ClienteId = agendamento.ClienteId,
+                ServicoId = agendamento.ServicoId,
+                ProfissionalId = agendamento.ProfissionalId,
+                Data = agendamento.Data,
+                HoraInicio = agendamento.HoraInicio,
+                HoraFim = agendamento.HoraFim,
+                Status = agendamento.Status,
+                Observacoes = agendamento.Observacoes
+            };
+
             await CarregarCombosAsync(vm);
-            return vm;
+            return View(vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, AgendamentoFormViewModel vm)
+        {
+            if (id != vm.Id)
+                return NotFound();
+
+            await CarregarCombosAsync(vm);
+
+            if (vm.Data.Date < DateTime.Today)
+                ModelState.AddModelError(nameof(vm.Data), "Não é permitido agendar em data passada.");
+
+            if (vm.HoraFim <= vm.HoraInicio)
+                ModelState.AddModelError(nameof(vm.HoraFim), "A hora final deve ser maior que a hora inicial.");
+
+            bool conflito = await ExisteConflitoHorario(vm.ProfissionalId, vm.Data, vm.HoraInicio, vm.HoraFim, vm.Id);
+
+            if (conflito)
+                ModelState.AddModelError(string.Empty, "Já existe um agendamento para esse profissional nesse horário.");
+
+            if (!ModelState.IsValid)
+                return View(vm);
+
+            var agendamento = await _context.Agendamentos.FindAsync(id);
+            if (agendamento == null)
+                return NotFound();
+
+            agendamento.ClienteId = vm.ClienteId;
+            agendamento.ServicoId = vm.ServicoId;
+            agendamento.ProfissionalId = vm.ProfissionalId;
+            agendamento.Data = vm.Data.Date;
+            agendamento.HoraInicio = vm.HoraInicio;
+            agendamento.HoraFim = vm.HoraFim;
+            agendamento.Status = vm.Status;
+            agendamento.Observacoes = vm.Observacoes;
+
+            await _context.SaveChangesAsync();
+
+            TempData["Sucesso"] = "Agendamento atualizado com sucesso.";
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var agendamento = await _context.Agendamentos
+                .Include(a => a.Cliente)
+                .Include(a => a.Servico)
+                .Include(a => a.Profissional)
+                .FirstOrDefaultAsync(a => a.Id == id);
+
+            if (agendamento == null)
+                return NotFound();
+
+            return View(agendamento);
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var agendamento = await _context.Agendamentos
+                .Include(a => a.Cliente)
+                .Include(a => a.Servico)
+                .Include(a => a.Profissional)
+                .FirstOrDefaultAsync(a => a.Id == id);
+
+            if (agendamento == null)
+                return NotFound();
+
+            return View(agendamento);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var agendamento = await _context.Agendamentos.FindAsync(id);
+            if (agendamento == null)
+                return NotFound();
+
+            _context.Agendamentos.Remove(agendamento);
+            await _context.SaveChangesAsync();
+
+            TempData["Sucesso"] = "Agendamento excluído com sucesso.";
+            return RedirectToAction(nameof(Index));
         }
 
         private async Task CarregarCombosAsync(AgendamentoFormViewModel vm)
@@ -102,17 +205,23 @@ namespace AgendaPro.Controllers
                 })
                 .ToListAsync();
 
-            vm.Profissionais = await _context.Profissionais
-                .OrderBy(p => p.Nome)
-                .Select(p => new SelectListItem
+            vm.Profissionais = await _context.Users
+                .Where(u => u.TipoUsuario == "Profissional")
+                .OrderBy(u => u.NomeCompleto)
+                .Select(u => new SelectListItem
                 {
-                    Value = p.Id.ToString(),
-                    Text = p.Nome
+                    Value = u.Id,
+                    Text = u.NomeCompleto ?? u.Email ?? "Profissional sem nome"
                 })
                 .ToListAsync();
         }
 
-        private async Task<bool> ExisteConflitoHorario(int profissionalId, DateTime data, TimeSpan horaInicio, TimeSpan horaFim, int? ignorarId = null)
+        private async Task<bool> ExisteConflitoHorario(
+            string profissionalId,
+            DateTime data,
+            TimeSpan horaInicio,
+            TimeSpan horaFim,
+            int? ignorarId = null)
         {
             return await _context.Agendamentos.AnyAsync(a =>
                 a.ProfissionalId == profissionalId &&

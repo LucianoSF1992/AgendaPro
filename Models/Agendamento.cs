@@ -21,7 +21,8 @@ namespace AgendaPro.Models
 
         [Required]
         [Display(Name = "Profissional")]
-        public string ProfissionalId { get; set; } = null!;
+        public string ProfissionalId { get; set; } = string.Empty;
+
         public ApplicationUser Profissional { get; set; } = null!;
 
 
