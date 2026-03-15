@@ -1,8 +1,51 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Início";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-semibold">AgendaPro</h1>
+        <p class="lead text-muted">
+            Sistema de agendamento de serviços para organizar clientes, profissionais e atendimentos.
+        </p>
+
+        <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-primary btn-lg mt-3">
+            Entrar no sistema
+        </a>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 h-100 rounded-4">
+                <div class="card-body">
+                    <h5 class="card-title">Clientes</h5>
+                    <p class="card-text">
+                        Cadastre e gerencie clientes com rapidez e organização.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 h-100 rounded-4">
+                <div class="card-body">
+                    <h5 class="card-title">Serviços</h5>
+                    <p class="card-text">
+                        Controle duração, valor padrão e informações de cada serviço.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 h-100 rounded-4">
+                <div class="card-body">
+                    <h5 class="card-title">Agenda</h5>
+                    <p class="card-text">
+                        Visualize e acompanhe os agendamentos do dia de forma prática.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
