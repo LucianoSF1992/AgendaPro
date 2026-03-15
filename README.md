@@ -115,7 +115,7 @@ AgendaPro
 - [X] Cadastro de profissionais
 
 ## 📅 Etapa 3 — Agendamentos
-- [ ] Criação de agendamentos
+- [X] Criação de agendamentos
 - [ ] Controle de conflito de horários
 - [ ] Atualização de status
 
