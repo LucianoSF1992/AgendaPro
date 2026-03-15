@@ -141,54 +141,39 @@ http://localhost:5139
 
 O projeto está sendo desenvolvido de forma incremental, com novas funcionalidades sendo adicionadas por etapas.
 
-📌 Roadmap do Projeto
-🚧 Etapa 1 — Estrutura inicial
 
- Estrutura inicial do projeto
+# 📌 Roadmap do Projeto
 
- Configuração do banco de dados
+## 🚧 Etapa 1 — Estrutura inicial
+- [x] Estrutura inicial do projeto  
+- [x] Configuração do banco de dados  
+- [x] Sistema de autenticação  
 
- Sistema de autenticação
+## 📋 Etapa 2 — Cadastros
+- [x] Cadastro de clientes  
+- [x] Cadastro de serviços  
+- [x] Cadastro de profissionais  
 
-📋 Etapa 2 — Cadastros
+## 📅 Etapa 3 — Agendamentos
+- [x] Criação de agendamentos  
+- [ ] Controle de conflito de horários  
+- [ ] Atualização de status  
 
- Cadastro de clientes
+## 📊 Etapa 4 — Dashboard
+- [ ] Visualização diária  
+- [ ] Filtro por profissional  
+- [ ] Estatísticas de atendimentos  
 
- Cadastro de serviços
+## 🕘 Etapa 5 — Histórico
+- [ ] Histórico de agendamentos  
+- [ ] Filtros por cliente  
+- [ ] Filtros por profissional  
 
- Cadastro de profissionais
+## 🚀 Etapa 6 — Deploy
+- [ ] Deploy na Hostinger  
+- [ ] Configuração de subdomínio  
+- [ ] Configuração de banco em produção  
 
-📅 Etapa 3 — Agendamentos
-
- Criação de agendamentos
-
- Controle de conflito de horários
-
- Atualização de status
-
-📊 Etapa 4 — Dashboard
-
- Visualização diária
-
- Filtro por profissional
-
- Estatísticas de atendimentos
-
-🕘 Etapa 5 — Histórico
-
- Histórico de agendamentos
-
- Filtros por cliente
-
- Filtros por profissional
-
-🚀 Etapa 6 — Deploy
-
- Deploy na Hostinger
-
- Configuração de subdomínio
-
- Configuração de banco em produção
 
 🌐 Deploy
 
@@ -196,37 +181,36 @@ O sistema será publicado em:
 
 agendapro.lucianoferreiradev.com
 
-📚 Aprendizados com o Projeto
+
+# 📚 Aprendizados com o Projeto
 
 Durante o desenvolvimento deste projeto foram aplicados conceitos importantes como:
 
-Arquitetura MVC
+- Arquitetura MVC  
+- ASP.NET Core Identity  
+- Entity Framework Core  
+- Relacionamentos entre entidades  
+- ViewModels  
+- Boas práticas de organização de código  
+- Controle de versionamento com Git  
 
-ASP.NET Core Identity
+---
 
-Entity Framework Core
+# 👨‍💻 Autor
 
-Relacionamentos entre entidades
+**Luciano Silva Ferreira**
 
-ViewModels
+Desenvolvedor Full Stack com foco em **.NET e ASP.NET Core**
 
-Boas práticas de organização de código
+---
 
-Controle de versionamento com Git
+# 🔗 Contato
 
-👨‍💻 Autor
+🌐 **Portfólio**  
+https://lucianoferreiradev.com  
 
-Luciano Silva Ferreira
+💼 **LinkedIn**  
+https://www.linkedin.com/in/lucianoferreira92/  
 
-Desenvolvedor Full Stack com foco em .NET e ASP.NET Core
-
-🔗 Contato
-
-🌐 Portfólio
-https://lucianoferreiradev.com
-
-💼 LinkedIn
-https://www.linkedin.com/in/lucianoferreira92/
-
-💻 GitHub
+💻 **GitHub**  
 https://github.com/LucianoSF1992
