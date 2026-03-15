@@ -2,47 +2,79 @@
     ViewData["Title"] = "Dashboard";
 }
 
-<div class="container py-4">
+<section class="py-2">
     <div class="mb-4">
+        <span class="badge bg-primary-subtle text-primary mb-2 px-3 py-2 rounded-pill">
+            Painel principal
+        </span>
         <h1 class="mb-1">Dashboard</h1>
-        <p class="text-muted">Bem-vindo ao AgendaPro.</p>
+        <p class="text-muted mb-0">Bem-vindo ao AgendaPro. Acesse rapidamente os principais módulos do sistema.</p>
     </div>
 
     <div class="row g-4">
         @if (User.IsInRole("Admin"))
         {
-            <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 rounded-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Clientes</h5>
-                        <p class="card-text">Gerencie os clientes cadastrados no sistema.</p>
-                        <a asp-controller="Clientes" asp-action="Index" class="btn btn-primary">Acessar clientes</a>
+            <div class="col-md-6 col-xl-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h5 class="card-title fw-bold">Clientes</h5>
+                        <p class="card-text text-muted flex-grow-1">
+                            Gerencie os clientes cadastrados no sistema de forma simples e centralizada.
+                        </p>
+                        <a asp-controller="Clientes" asp-action="Index" class="btn btn-primary">
+                            Acessar clientes
+                        </a>
                     </div>
                 </div>
             </div>
         }
 
-        <div class="col-md-4">
-            <div class="card shadow-sm border-0 h-100 rounded-4">
-                <div class="card-body">
-                    <h5 class="card-title">Agenda</h5>
-                    <p class="card-text">Em breve: visualização dos agendamentos do dia.</p>
-                    <button class="btn btn-outline-secondary" disabled>Em desenvolvimento</button>
+        <div class="col-md-6 col-xl-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+                <div class="card-body p-4 d-flex flex-column">
+                    <h5 class="card-title fw-bold">Agendamentos</h5>
+                    <p class="card-text text-muted flex-grow-1">
+                        Visualize a agenda, acompanhe horários e gerencie os atendimentos cadastrados.
+                    </p>
+                    <a asp-controller="Agendamentos" asp-action="Index" class="btn btn-primary">
+                        Acessar agenda
+                    </a>
                 </div>
             </div>
         </div>
 
         @if (User.IsInRole("Admin"))
         {
-            <div class="col-md-4">
-                <div class="card shadow-sm border-0 h-100 rounded-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Serviços</h5>
-                        <p class="card-text">Em breve: cadastro de serviços prestados.</p>
-                        <button class="btn btn-outline-secondary" disabled>Em desenvolvimento</button>
+            <div class="col-md-6 col-xl-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h5 class="card-title fw-bold">Serviços</h5>
+                        <p class="card-text text-muted flex-grow-1">
+                            Cadastre e mantenha atualizados os serviços oferecidos no sistema.
+                        </p>
+                        <a asp-controller="Servicos" asp-action="Index" class="btn btn-primary">
+                            Acessar serviços
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+
+        @if (User.IsInRole("Admin"))
+        {
+            <div class="col-md-6 col-xl-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h5 class="card-title fw-bold">Profissionais</h5>
+                        <p class="card-text text-muted flex-grow-1">
+                            Organize os profissionais cadastrados e mantenha a equipe atualizada.
+                        </p>
+                        <a asp-controller="Profissionais" asp-action="Index" class="btn btn-outline-primary">
+                            Acessar profissionais
+                        </a>
                     </div>
                 </div>
             </div>
         }
     </div>
-</div>
+</section>
