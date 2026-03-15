@@ -47,16 +47,26 @@ namespace AgendaPro.Controllers
             if (vm.Data.Date < DateTime.Today)
                 ModelState.AddModelError(nameof(vm.Data), "Não é permitido agendar em data passada.");
 
-            if (vm.HoraFim <= vm.HoraInicio)
-                ModelState.AddModelError(nameof(vm.HoraFim), "A hora final deve ser maior que a hora inicial.");
-
-            bool conflito = await ExisteConflitoHorario(vm.ProfissionalId, vm.Data, vm.HoraInicio, vm.HoraFim);
-
-            if (conflito)
-                ModelState.AddModelError(string.Empty, "Já existe um agendamento para esse profissional nesse horário.");
+            var servico = await _context.Servicos.FindAsync(vm.ServicoId);
+            if (servico == null)
+                ModelState.AddModelError(nameof(vm.ServicoId), "Serviço inválido.");
 
             if (!ModelState.IsValid)
                 return View(vm);
+
+            var horaFimCalculada = vm.HoraInicio.Add(TimeSpan.FromMinutes(servico!.DuracaoEmMinutos));
+
+            bool conflito = await ExisteConflitoHorario(
+                vm.ProfissionalId,
+                vm.Data,
+                vm.HoraInicio,
+                horaFimCalculada);
+
+            if (conflito)
+            {
+                ModelState.AddModelError(string.Empty, "Já existe um agendamento para esse profissional nesse horário.");
+                return View(vm);
+            }
 
             var agendamento = new Agendamento
             {
@@ -65,8 +75,8 @@ namespace AgendaPro.Controllers
                 ProfissionalId = vm.ProfissionalId,
                 Data = vm.Data.Date,
                 HoraInicio = vm.HoraInicio,
-                HoraFim = vm.HoraFim,
-                Status = vm.Status,
+                HoraFim = horaFimCalculada,
+                Status = string.IsNullOrWhiteSpace(vm.Status) ? "Agendado" : vm.Status,
                 Observacoes = vm.Observacoes
             };
 
@@ -112,16 +122,27 @@ namespace AgendaPro.Controllers
             if (vm.Data.Date < DateTime.Today)
                 ModelState.AddModelError(nameof(vm.Data), "Não é permitido agendar em data passada.");
 
-            if (vm.HoraFim <= vm.HoraInicio)
-                ModelState.AddModelError(nameof(vm.HoraFim), "A hora final deve ser maior que a hora inicial.");
-
-            bool conflito = await ExisteConflitoHorario(vm.ProfissionalId, vm.Data, vm.HoraInicio, vm.HoraFim, vm.Id);
-
-            if (conflito)
-                ModelState.AddModelError(string.Empty, "Já existe um agendamento para esse profissional nesse horário.");
+            var servico = await _context.Servicos.FindAsync(vm.ServicoId);
+            if (servico == null)
+                ModelState.AddModelError(nameof(vm.ServicoId), "Serviço inválido.");
 
             if (!ModelState.IsValid)
                 return View(vm);
+
+            var horaFimCalculada = vm.HoraInicio.Add(TimeSpan.FromMinutes(servico!.DuracaoEmMinutos));
+
+            bool conflito = await ExisteConflitoHorario(
+                vm.ProfissionalId,
+                vm.Data,
+                vm.HoraInicio,
+                horaFimCalculada,
+                vm.Id);
+
+            if (conflito)
+            {
+                ModelState.AddModelError(string.Empty, "Já existe um agendamento para esse profissional nesse horário.");
+                return View(vm);
+            }
 
             var agendamento = await _context.Agendamentos.FindAsync(id);
             if (agendamento == null)
@@ -132,8 +153,8 @@ namespace AgendaPro.Controllers
             agendamento.ProfissionalId = vm.ProfissionalId;
             agendamento.Data = vm.Data.Date;
             agendamento.HoraInicio = vm.HoraInicio;
-            agendamento.HoraFim = vm.HoraFim;
-            agendamento.Status = vm.Status;
+            agendamento.HoraFim = horaFimCalculada;
+            agendamento.Status = string.IsNullOrWhiteSpace(vm.Status) ? "Agendado" : vm.Status;
             agendamento.Observacoes = vm.Observacoes;
 
             await _context.SaveChangesAsync();
