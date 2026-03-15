@@ -1,0 +1,26 @@
+@model AgendaPro.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "Detalhes do Profissional";
+}
+
+<div class="container py-4">
+    <h1 class="mb-4">Detalhes do Profissional</h1>
+
+    <dl class="row">
+        <dt class="col-sm-3">Nome</dt>
+        <dd class="col-sm-9">@Model.NomeCompleto</dd>
+
+        <dt class="col-sm-3">E-mail</dt>
+        <dd class="col-sm-9">@Model.Email</dd>
+
+        <dt class="col-sm-3">Especialidade</dt>
+        <dd class="col-sm-9">@Model.Especialidade</dd>
+
+        <dt class="col-sm-3">Telefone</dt>
+        <dd class="col-sm-9">@Model.Telefone</dd>
+    </dl>
+
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+</div>

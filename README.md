@@ -112,7 +112,7 @@ AgendaPro
 ## 📋 Etapa 2 — Cadastros
 - [X] Cadastro de clientes
 - [X] Cadastro de serviços
-- [ ] Cadastro de profissionais
+- [X] Cadastro de profissionais
 
 ## 📅 Etapa 3 — Agendamentos
 - [ ] Criação de agendamentos
