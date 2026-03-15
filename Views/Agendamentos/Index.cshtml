@@ -2,10 +2,11 @@
 
 @{
     ViewData["Title"] = "Agendamentos";
+
     var agendamentosPorData = Model
-    .OrderBy(a => a.Data)
-    .ThenBy(a => a.HoraInicio)
-    .GroupBy(a => a.Data.Date);
+        .OrderBy(a => a.Data)
+        .ThenBy(a => a.HoraInicio)
+        .GroupBy(a => a.Data.Date);
 }
 
 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -43,19 +44,23 @@ else
                             <th>Cliente</th>
                             <th>Serviço</th>
                             <th>Profissional</th>
-                            <th>Status</th>
+                            <th class="text-center">Status</th>
                             <th style="width: 220px;">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in grupo)
                         {
-                            <tr>
+                            var dataHoraAgendamento = item.Data.Date.Add(item.HoraInicio);
+                            var agendamentoPassado = dataHoraAgendamento < DateTime.Now;
+
+                            <tr class="@(agendamentoPassado ? "table-secondary text-muted" : "")">
                                 <td>@item.HoraInicio.ToString(@"hh\:mm") - @item.HoraFim.ToString(@"hh\:mm")</td>
                                 <td>@item.Cliente.Nome</td>
                                 <td>@item.Servico.Nome</td>
                                 <td>@(item.Profissional.NomeCompleto ?? item.Profissional.Email)</td>
-                                <td>
+
+                                <td class="text-center">
                                     @switch (item.Status)
                                     {
                                         case "Agendado":
@@ -76,6 +81,7 @@ else
                                             break;
                                     }
                                 </td>
+
                                 <td>
                                     <a asp-action="Details" asp-route-id="@item.Id"
                                        class="btn btn-sm btn-info text-white">Detalhes</a>
