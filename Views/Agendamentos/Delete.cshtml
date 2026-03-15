@@ -1,0 +1,41 @@
+@model AgendaPro.Models.Agendamento
+
+@{
+    ViewData["Title"] = "Excluir Agendamento";
+}
+
+<h2>Excluir Agendamento</h2>
+
+<div class="alert alert-danger">
+    Tem certeza que deseja excluir este agendamento?
+</div>
+
+<dl class="row">
+
+    <dt class="col-sm-3">Cliente</dt>
+    <dd class="col-sm-9">@Model.Cliente.Nome</dd>
+
+    <dt class="col-sm-3">Serviço</dt>
+    <dd class="col-sm-9">@Model.Servico.Nome</dd>
+
+    <dt class="col-sm-3">Profissional</dt>
+    <dd class="col-sm-9">@Model.Profissional.Nome</dd>
+
+    <dt class="col-sm-3">Data</dt>
+    <dd class="col-sm-9">@Model.Data.ToString("dd/MM/yyyy")</dd>
+
+    <dt class="col-sm-3">Horário</dt>
+    <dd class="col-sm-9">
+        @Model.HoraInicio.ToString(@"hh\:mm")
+        -
+        @Model.HoraFim.ToString(@"hh\:mm")
+    </dd>
+
+</dl>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

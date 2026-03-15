@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AgendaPro")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6a5b59ff43f9481a72b7fb6b0f4498500e82ecb8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+731ffa60b543f41f708dc89954f52a333a4da48c")]
 [assembly: System.Reflection.AssemblyProductAttribute("AgendaPro")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AgendaPro")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

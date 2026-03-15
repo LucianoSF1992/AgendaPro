@@ -1,0 +1,59 @@
+@model AgendaPro.ViewModels.AgendamentoFormViewModel
+
+@{
+    ViewData["Title"] = "Editar Agendamento";
+}
+
+<h2>Editar Agendamento</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="ClienteId" class="form-label"></label>
+        <select asp-for="ClienteId" asp-items="Model.Clientes" class="form-select"></select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ServicoId" class="form-label"></label>
+        <select asp-for="ServicoId" asp-items="Model.Servicos" class="form-select"></select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ProfissionalId" class="form-label"></label>
+        <select asp-for="ProfissionalId" asp-items="Model.Profissionais" class="form-select"></select>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <label asp-for="Data" class="form-label"></label>
+            <input asp-for="Data" class="form-control" />
+        </div>
+
+        <div class="col-md-4">
+            <label asp-for="HoraInicio" class="form-label"></label>
+            <input asp-for="HoraInicio" type="time" class="form-control" />
+        </div>
+
+        <div class="col-md-4">
+            <label asp-for="HoraFim" class="form-label"></label>
+            <input asp-for="HoraFim" type="time" class="form-control" />
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <label asp-for="Observacoes" class="form-label"></label>
+        <textarea asp-for="Observacoes" class="form-control"></textarea>
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

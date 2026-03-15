@@ -14,6 +14,8 @@ namespace AgendaPro.Data
 
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Servico> Servicos { get; set; }
+        public DbSet<Agendamento> Agendamentos { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -22,6 +24,14 @@ namespace AgendaPro.Data
             builder.Entity<Servico>()
                 .Property(s => s.ValorPadrao)
                 .HasPrecision(10, 2);
+
+            builder.Entity<Agendamento>()
+                .Property(a => a.Status)
+                .HasMaxLength(20);
+
+            builder.Entity<Agendamento>()
+                .Property(a => a.Observacoes)
+                .HasMaxLength(500);
         }
     }
 }

@@ -1,0 +1,68 @@
+@model AgendaPro.ViewModels.AgendamentoFormViewModel
+
+@{
+    ViewData["Title"] = "Novo Agendamento";
+}
+
+<h2>Novo Agendamento</h2>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+    <div class="mb-3">
+        <label asp-for="ClienteId" class="form-label"></label>
+        <select asp-for="ClienteId" asp-items="Model.Clientes" class="form-select">
+            <option value="">Selecione</option>
+        </select>
+        <span asp-validation-for="ClienteId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ServicoId" class="form-label"></label>
+        <select asp-for="ServicoId" asp-items="Model.Servicos" class="form-select">
+            <option value="">Selecione</option>
+        </select>
+        <span asp-validation-for="ServicoId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ProfissionalId" class="form-label"></label>
+        <select asp-for="ProfissionalId" asp-items="Model.Profissionais" class="form-select">
+            <option value="">Selecione</option>
+        </select>
+        <span asp-validation-for="ProfissionalId" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <label asp-for="Data" class="form-label"></label>
+            <input asp-for="Data" class="form-control" />
+            <span asp-validation-for="Data" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label asp-for="HoraInicio" class="form-label"></label>
+            <input asp-for="HoraInicio" type="time" class="form-control" />
+            <span asp-validation-for="HoraInicio" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label asp-for="HoraFim" class="form-label"></label>
+            <input asp-for="HoraFim" type="time" class="form-control" />
+            <span asp-validation-for="HoraFim" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Observacoes" class="form-label"></label>
+        <textarea asp-for="Observacoes" class="form-control"></textarea>
+        <span asp-validation-for="Observacoes" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
