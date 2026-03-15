@@ -15,5 +15,13 @@ namespace AgendaPro.Data
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Servico> Servicos { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Servico>()
+                .Property(s => s.ValorPadrao)
+                .HasPrecision(10, 2);
+        }
     }
 }
