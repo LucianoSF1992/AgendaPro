@@ -1,21 +1,58 @@
 ﻿@page
 @model LogoutModel
+
 @{
-    ViewData["Title"] = "Log out";
+    ViewData["Title"] = "Sair";
 }
 
-<header>
-    <h1>@ViewData["Title"]</h1>
-    @{
-        if (User.Identity?.IsAuthenticated ?? false)
-        {
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                <button type="submit" class="nav-link btn btn-link text-dark">Click here to Logout</button>
-            </form>
-        }
-        else
-        {
-            <p>You have successfully logged out of the application.</p>
-        }
-    }
-</header>
+<section class="py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body p-4 p-md-5 text-center">
+
+                    @if (User.Identity?.IsAuthenticated ?? false)
+                    {
+                        <span class="badge bg-warning-subtle text-warning mb-3 px-3 py-2 rounded-pill">
+                            Encerrar sessão
+                        </span>
+
+                        <h1 class="h3 fw-bold mb-3">Deseja sair do sistema?</h1>
+
+                        <p class="text-muted mb-4">
+                            Clique no botão abaixo para encerrar sua sessão no AgendaPro.
+                        </p>
+
+                        <form asp-area="Identity"
+                              asp-page="/Account/Logout"
+                              asp-route-returnUrl="@Url.Page("/", new { area = "" })"
+                              method="post">
+
+                            <button type="submit" class="btn btn-danger px-4">
+                                Sair do sistema
+                            </button>
+
+                        </form>
+                    }
+                    else
+                    {
+                        <span class="badge bg-success-subtle text-success mb-3 px-3 py-2 rounded-pill">
+                            Sessão encerrada
+                        </span>
+
+                        <h1 class="h3 fw-bold mb-3">Você saiu do sistema</h1>
+
+                        <p class="text-muted mb-4">
+                            Sua sessão foi encerrada com sucesso.
+                        </p>
+
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-primary px-4">
+                            Voltar para o início
+                        </a>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
