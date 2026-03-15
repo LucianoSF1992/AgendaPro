@@ -21,10 +21,6 @@
                 </button>
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Início</a>
-                        </li>
-
                         @if (User.Identity != null && User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
@@ -37,14 +33,16 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Clientes" asp-action="Index">Clientes</a>
                             </li>
-
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Servicos" asp-action="Index">Serviços</a>
                             </li>
-
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Profissionais"
                                    asp-action="Index">Profissionais</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Agendamentos"
+                                   asp-action="Index">Agendamentos</a>
                             </li>
                         }
                     </ul>
