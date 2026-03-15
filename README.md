@@ -1,139 +1,116 @@
-📅 AgendaPro
+# 📅 AgendaPro
 
+![.NET](https://img.shields.io/badge/.NET-9-blue)
+![ASP.NET](https://img.shields.io/badge/ASP.NET-Core-purple)
+![C#](https://img.shields.io/badge/C%23-Backend-green)
+![SQL Server](https://img.shields.io/badge/SQL%20Server-Database-red)
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
-
-
-
-
-
-
-
-
-
-
-Sistema web para gerenciamento de agendamentos de serviços, desenvolvido com ASP.NET Core MVC, C# e SQL Server.
+Sistema web para **gerenciamento de agendamentos de serviços**, desenvolvido com **ASP.NET Core MVC, C# e SQL Server**.
 
 O sistema permite que empresas ou profissionais organizem seus atendimentos, gerenciem clientes, serviços e acompanhem o status de cada agendamento de forma simples e eficiente.
 
-🖥️ Preview do Sistema
+---
 
-(Em breve imagens da aplicação)
+# 🖥️ Preview do Sistema
+
+*(Em breve imagens da aplicação)*
 
 Exemplo de funcionalidades:
 
-Dashboard de atendimentos
+- Dashboard de atendimentos
+- Cadastro de clientes
+- Cadastro de serviços
+- Cadastro de profissionais
+- Agendamento de serviços
+- Controle de status do atendimento
 
-Cadastro de clientes
+---
 
-Cadastro de serviços
-
-Cadastro de profissionais
-
-Agendamento de serviços
-
-Controle de status do atendimento
-
-🎯 Objetivo do Projeto
+# 🎯 Objetivo do Projeto
 
 Permitir que empresas ou profissionais organizem seus agendamentos de serviços, sabendo:
 
-quem será atendido
+- quem será atendido
+- em qual horário
+- por qual profissional
+- qual o serviço
+- qual o status do atendimento
 
-em qual horário
+---
 
-por qual profissional
+# 🧰 Tecnologias Utilizadas
 
-qual o serviço
+## Backend
+- **.NET 9**
+- **ASP.NET Core MVC**
+- **C#**
+- **Entity Framework Core**
 
-qual o status do atendimento
+## Banco de Dados
+- **SQL Server**
 
-🧰 Tecnologias Utilizadas
-Backend
+## Frontend
+- **Razor Views**
+- **Bootstrap 5**
+- **HTML / CSS**
 
-.NET 9
+## Ferramentas
+- **Git**
+- **GitHub**
+- **Visual Studio / VS Code**
 
-ASP.NET Core MVC
+---
 
-C#
+# 👥 Tipos de Usuários
 
-Entity Framework Core
+## 👑 Admin
+- Gerencia clientes
+- Gerencia serviços
+- Gerencia profissionais
+- Cria e edita agendamentos
+- Visualiza toda a agenda
 
-Banco de Dados
+## 👨‍🔧 Profissional
+- Visualiza seus próprios agendamentos
+- Atualiza status dos atendimentos
 
-SQL Server
+---
 
-Frontend
+# 📋 Funcionalidades do MVP
 
-Razor Views
+- Autenticação de usuários com Identity
+- Cadastro de clientes
+- Cadastro de serviços
+- Cadastro de profissionais
+- Criação de agendamentos
+- Controle de status
+- Dashboard de agenda
+- Histórico de atendimentos
+- Layout responsivo
 
-Bootstrap 5
+---
 
-HTML / CSS
+# 🏗️ Arquitetura do Projeto
 
-Ferramentas
+O projeto segue o padrão **ASP.NET Core MVC**.
 
-Git
-
-GitHub
-
-Visual Studio / VS Code
-
-👥 Tipos de Usuários
-👑 Admin
-
-Gerencia clientes
-
-Gerencia serviços
-
-Gerencia profissionais
-
-Cria e edita agendamentos
-
-Visualiza toda a agenda
-
-👨‍🔧 Profissional
-
-Visualiza seus próprios agendamentos
-
-Atualiza status dos atendimentos
-
-📋 Funcionalidades do MVP
-
-Autenticação de usuários com Identity
-
-Cadastro de clientes
-
-Cadastro de serviços
-
-Cadastro de profissionais
-
-Criação de agendamentos
-
-Controle de status
-
-Dashboard de agenda
-
-Histórico de atendimentos
-
-Layout responsivo
-
-🏗️ Arquitetura do Projeto
-
-O projeto segue o padrão ASP.NET Core MVC.
-
+```text
 AgendaPro
 │
 ├── Controllers
 ├── Models
 ├── ViewModels
 ├── Data
-│ ├── ApplicationDbContext
-│ └── Migrations
+│   ├── ApplicationDbContext
+│   └── Migrations
 ├── Views
 ├── wwwroot
 └── Program.cs
 
 🚀 Como executar o projeto
+
 1️⃣ Clonar o repositório
 
 git clone https://github.com/LucianoSF1992/AgendaPro.git
@@ -154,7 +131,7 @@ dotnet ef database update
 
 dotnet run
 
-O sistema será executado em uma URL local como:
+O sistema será executado em uma URL local, como por exemplo:
 
 http://localhost:5139
 
@@ -162,7 +139,7 @@ http://localhost:5139
 
 🚧 Em desenvolvimento
 
-O projeto está sendo desenvolvido de forma incremental, com novas funcionalidades sendo adicionadas a cada etapa.
+O projeto está sendo desenvolvido de forma incremental, com novas funcionalidades sendo adicionadas por etapas.
 
 📌 Roadmap do Projeto
 🚧 Etapa 1 — Estrutura inicial
