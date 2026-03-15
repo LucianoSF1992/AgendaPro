@@ -26,16 +26,17 @@
         </tr>
     </thead>
     <tbody>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.Data.ToString("dd/MM/yyyy")</td>
-            <td>@item.HoraInicio.ToString(@"hh\:mm") - @item.HoraFim.ToString(@"hh\:mm")</td>
-            <td>@item.Cliente.Nome</td>
-            <td>@item.Servico.Nome</td>
-            <td>@item.Profissional.Nome</td>
-            <td>@item.Status</td>
-        </tr>
-    }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Data.ToString("dd/MM/yyyy")</td>
+                <td>@item.HoraInicio.ToString(@"hh\:mm") - @item.HoraFim.ToString(@"hh\:mm")</td>
+                <td>@item.Cliente.Nome</td>
+                <td>@item.Servico.Nome</td>
+                <td>@(item.Profissional.NomeCompleto ?? item.Profissional.Email)
+                </td>
+                <td>@item.Status</td>
+            </tr>
+        }
     </tbody>
 </table>
