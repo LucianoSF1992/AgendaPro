@@ -147,34 +147,41 @@ O projeto está sendo desenvolvido de forma incremental, com novas funcionalidad
 # 📌 Roadmap do Projeto
 
 ## 🚧 Etapa 1 — Estrutura inicial
-- [x] Estrutura inicial do projeto  
-- [x] Configuração do banco de dados  
-- [x] Sistema de autenticação  
+- [x] Estrutura inicial do projeto
+- [x] Configuração do banco de dados
+- [x] Sistema de autenticação
 
 ## 📋 Etapa 2 — Cadastros
-- [x] Cadastro de clientes  
-- [x] Cadastro de serviços  
-- [x] Cadastro de profissionais  
+- [x] Cadastro de clientes
+- [x] Cadastro de serviços
+- [x] Cadastro de profissionais
 
 ## 📅 Etapa 3 — Agendamentos
-- [x] Criação de agendamentos  
-- [ ] Controle de conflito de horários  
-- [ ] Atualização de status  
+- [x] Criação de agendamentos
+- [x] Controle de conflito de horários
+- [ ] Atualização de status
 
-## 📊 Etapa 4 — Dashboard
-- [ ] Visualização diária  
-- [ ] Filtro por profissional  
-- [ ] Estatísticas de atendimentos  
+## 🎨 Etapa 4 — Interface e experiência
+- [x] Agrupamento de agendamentos por data
+- [x] Exibição visual de status com badges
+- [x] Destaque para agendamentos passados
+- [x] Personalização do layout global
+- [x] Personalização das páginas do ASP.NET Identity
 
-## 🕘 Etapa 5 — Histórico
-- [ ] Histórico de agendamentos  
-- [ ] Filtros por cliente  
-- [ ] Filtros por profissional  
+## 📊 Etapa 5 — Dashboard
+- [ ] Visualização diária
+- [ ] Filtro por profissional
+- [ ] Estatísticas de atendimentos
 
-## 🚀 Etapa 6 — Deploy
-- [ ] Deploy na Hostinger  
-- [ ] Configuração de subdomínio  
-- [ ] Configuração de banco em produção  
+## 🕘 Etapa 6 — Histórico
+- [ ] Histórico de agendamentos
+- [ ] Filtros por cliente
+- [ ] Filtros por profissional
+
+## 🚀 Etapa 7 — Deploy
+- [ ] Deploy na Hostinger
+- [ ] Configuração de subdomínio
+- [ ] Configuração de banco em produção 
 
 
 🌐 Deploy
