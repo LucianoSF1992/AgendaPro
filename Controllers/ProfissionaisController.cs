@@ -114,7 +114,7 @@ namespace AgendaPro.Controllers
             var model = new ProfissionalViewModel
             {
                 Id = profissional.Id,
-                NomeCompleto = profissional.NomeCompleto,
+                NomeCompleto = profissional.NomeCompleto ?? string.Empty,
                 Email = profissional.Email ?? string.Empty,
                 Especialidade = profissional.Especialidade,
                 Telefone = profissional.Telefone
