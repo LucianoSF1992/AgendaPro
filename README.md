@@ -143,7 +143,6 @@ http://localhost:5139
 
 O projeto está sendo desenvolvido de forma incremental, com novas funcionalidades sendo adicionadas por etapas.
 
-
 # 📌 Roadmap do Projeto
 
 ## 🚧 Etapa 1 — Estrutura inicial
@@ -169,21 +168,36 @@ O projeto está sendo desenvolvido de forma incremental, com novas funcionalidad
 - [x] Personalização das páginas do ASP.NET Identity
 
 ## 📊 Etapa 5 — Dashboard
-- [X] Visualização diária
-- [X] Filtro por profissional
-- [X] Estatísticas de atendimentos
+- [x] Visualização diária
+- [x] Filtro por profissional
+- [x] Estatísticas de atendimentos
 
 ## 🕘 Etapa 6 — Relatórios e visão gerencial
-- [X] Relatório por período
-- [X] Serviços mais agendados
-- [X] Desempenho por profissional
-- [X] Faturamento estimado
+- [x] Relatório por período
+- [x] Serviços mais agendados
+- [x] Desempenho por profissional
+- [x] Faturamento estimado
 
-## 🚀 Etapa 7 — Deploy
+## ✅ Etapa 7 — Preparação para produção
+- [ ] Revisão geral de permissões e acessos
+- [ ] Testes completos dos fluxos principais
+- [ ] Revisão visual e responsividade
+- [ ] Tratamento de erros e mensagens
+- [ ] Conferência de connection string e appsettings de produção
+
+## 🚀 Etapa 8 — Deploy
 - [ ] Deploy na Hostinger
 - [ ] Configuração de subdomínio
-- [ ] Configuração de banco em produção 
+- [ ] Configuração de banco em produção
+- [ ] Publicação e testes em produção
 
+## 🌱 Etapa 9 — Evoluções avançadas
+- [ ] Calendário mensal/semanal
+- [ ] Bloqueio de horários
+- [ ] Edição rápida da agenda
+- [ ] Exportação PDF/Excel
+- [ ] Confirmação por e-mail
+- [ ] Controle de permissões mais refinado
 
 🌐 Deploy
 
