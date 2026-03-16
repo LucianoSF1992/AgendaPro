@@ -40,6 +40,20 @@ Permitir que empresas ou profissionais organizem seus agendamentos de serviços,
 
 ---
 
+# ✨ Features
+
+- Autenticação com ASP.NET Core Identity
+- Controle de usuários por perfil (Admin e Profissional)
+- Gestão de clientes
+- Gestão de serviços
+- Gestão de profissionais
+- Criação e edição de agendamentos
+- Controle de conflito de horários
+- Atualização de status do atendimento
+- Dashboard com indicadores do dia
+- Relatórios gerenciais por período
+- Interface responsiva com Bootstrap
+
 # 🧰 Tecnologias Utilizadas
 
 ## Backend
@@ -111,27 +125,57 @@ AgendaPro
 
 ```
 
-🚀 Como executar o projeto
+```markdown
+# 🗄️ Estrutura do Banco de Dados
 
-1️⃣ Clonar o repositório
+Principais entidades do sistema:
 
+- **Clientes**
+- **Serviços**
+- **Profissionais**
+- **Agendamentos**
+- **Usuários (Identity)**
+
+Relacionamentos principais:
+
+- Um **cliente** pode possuir vários **agendamentos**
+- Um **profissional** pode possuir vários **agendamentos**
+- Um **serviço** pode estar associado a vários **agendamentos**
+```
+
+
+# 🚀 Como executar o projeto
+
+### 1️⃣ Clonar o repositório
+
+```bash
 git clone https://github.com/LucianoSF1992/AgendaPro.git
+
+```
 
 2️⃣ Entrar na pasta do projeto
 
+```bash
 cd AgendaPro
+```
 
 3️⃣ Restaurar dependências
 
+```bash
 dotnet restore
+```
 
 4️⃣ Aplicar migrations
 
+```bash
 dotnet ef database update
+```
 
 5️⃣ Executar o projeto
 
+```bash
 dotnet run
+```
 
 O sistema será executado em uma URL local, como por exemplo:
 
