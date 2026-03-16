@@ -159,7 +159,7 @@ O projeto está sendo desenvolvido de forma incremental, com novas funcionalidad
 ## 📅 Etapa 3 — Agendamentos
 - [x] Criação de agendamentos
 - [x] Controle de conflito de horários
-- [ ] Atualização de status
+- [x] Atualização de status
 
 ## 🎨 Etapa 4 — Interface e experiência
 - [x] Agrupamento de agendamentos por data

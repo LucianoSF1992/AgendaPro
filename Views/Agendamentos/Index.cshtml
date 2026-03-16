@@ -33,6 +33,13 @@
         </div>
     }
 
+    @if (TempData["Erro"] != null)
+    {
+        <div class="alert alert-danger mb-4">
+            @TempData["Erro"]
+        </div>
+    }
+
     @if (!Model.Any())
     {
         <div class="card border-0 shadow-sm rounded-4">
@@ -49,7 +56,7 @@
         {
             <div class="card mb-4 shadow-sm border-0 rounded-4">
                 <div class="card-header bg-light py-3 px-4">
-                    <h5 class="mb-0 fw-bold">@grupo.Key.ToString("dddd, dd/MM/yyyy")</h5>
+                    <h5 class="mb-0 fw-bold text-capitalize">@grupo.Key.ToString("dddd, dd/MM/yyyy")</h5>
                 </div>
 
                 <div class="card-body p-0">
@@ -61,7 +68,8 @@
                                     <th>Cliente</th>
                                     <th>Serviço</th>
                                     <th>Profissional</th>
-                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Status Atual</th>
+                                    <th class="text-center">Atualizar Status</th>
                                     <th class="text-center pe-4" style="width: 220px;">Ações</th>
                                 </tr>
                             </thead>
@@ -101,6 +109,23 @@
                                             }
                                         </td>
 
+                                        <td class="text-center">
+                                            <form asp-action="AtualizarStatus" method="post" class="d-flex justify-content-center gap-2">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="id" value="@item.Id" />
+
+                                                <select name="status" class="form-select form-select-sm" style="max-width: 140px;">
+                                                    <option value="Agendado" selected="@(item.Status == "Agendado")">Agendado</option>
+                                                    <option value="Concluído" selected="@(item.Status == "Concluído" || item.Status == "Concluido")">Concluído</option>
+                                                    <option value="Cancelado" selected="@(item.Status == "Cancelado")">Cancelado</option>
+                                                </select>
+
+                                                <button type="submit" class="btn btn-sm btn-outline-primary">
+                                                    Salvar
+                                                </button>
+                                            </form>
+                                        </td>
+
                                         <td class="text-center pe-4">
                                             <div class="d-flex flex-wrap justify-content-center gap-2">
                                                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">
@@ -109,8 +134,7 @@
                                                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning">
                                                     Editar
                                                 </a>
-                                                <a asp-action="Delete" asp-route-id="@item.Id"
-                                                       class="btn btn-sm btn-outline-danger">
+                                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">
                                                     Excluir
                                                 </a>
                                             </div>

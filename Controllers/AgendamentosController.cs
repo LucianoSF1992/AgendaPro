@@ -76,7 +76,7 @@ namespace AgendaPro.Controllers
                 Data = vm.Data.Date,
                 HoraInicio = vm.HoraInicio,
                 HoraFim = horaFimCalculada,
-                Status = string.IsNullOrWhiteSpace(vm.Status) ? "Agendado" : vm.Status,
+                Status = NormalizarStatus(vm.Status),
                 Observacoes = vm.Observacoes
             };
 
@@ -154,12 +154,36 @@ namespace AgendaPro.Controllers
             agendamento.Data = vm.Data.Date;
             agendamento.HoraInicio = vm.HoraInicio;
             agendamento.HoraFim = horaFimCalculada;
-            agendamento.Status = string.IsNullOrWhiteSpace(vm.Status) ? "Agendado" : vm.Status;
+            agendamento.Status = NormalizarStatus(vm.Status);
             agendamento.Observacoes = vm.Observacoes;
 
             await _context.SaveChangesAsync();
 
             TempData["Sucesso"] = "Agendamento atualizado com sucesso.";
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AtualizarStatus(int id, string status)
+        {
+            var agendamento = await _context.Agendamentos.FindAsync(id);
+            if (agendamento == null)
+                return NotFound();
+
+            var statusNormalizado = NormalizarStatus(status);
+            var statusValidos = new[] { "Agendado", "Concluído", "Cancelado" };
+
+            if (!statusValidos.Contains(statusNormalizado))
+            {
+                TempData["Erro"] = "Status inválido.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            agendamento.Status = statusNormalizado;
+            await _context.SaveChangesAsync();
+
+            TempData["Sucesso"] = "Status do agendamento atualizado com sucesso.";
             return RedirectToAction(nameof(Index));
         }
 
@@ -251,6 +275,21 @@ namespace AgendaPro.Controllers
                 horaInicio < a.HoraFim &&
                 horaFim > a.HoraInicio
             );
+        }
+
+        private string NormalizarStatus(string? status)
+        {
+            if (string.IsNullOrWhiteSpace(status))
+                return "Agendado";
+
+            return status.Trim() switch
+            {
+                "Agendado" => "Agendado",
+                "Concluido" => "Concluído",
+                "Concluído" => "Concluído",
+                "Cancelado" => "Cancelado",
+                _ => "Agendado"
+            };
         }
     }
 }

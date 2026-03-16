@@ -332,6 +332,7 @@ C:\Users\lucia\OneDrive\Cursos\Curso Meu Sistema Lucrativo\Projetos Pessoais\Age
 C:\Users\lucia\OneDrive\Cursos\Curso Meu Sistema Lucrativo\Projetos Pessoais\AgendaPro\obj\Debug\net9.0\compressed\nezrqnk58p-muycvpuwrr.gz
 C:\Users\lucia\OneDrive\Cursos\Curso Meu Sistema Lucrativo\Projetos Pessoais\AgendaPro\obj\Debug\net9.0\compressed\v0zgfp0y55-87fc7y1x7t.gz
 C:\Users\lucia\OneDrive\Cursos\Curso Meu Sistema Lucrativo\Projetos Pessoais\AgendaPro\obj\Debug\net9.0\compressed\yfc7ypekbg-mlv21k5csn.gz
+C:\Users\lucia\OneDrive\Cursos\Curso Meu Sistema Lucrativo\Projetos Pessoais\AgendaPro\obj\Debug\net9.0\compressed\okfdjnu93c-x1290dmsdq.gz
 C:\Users\lucia\OneDrive\Cursos\Curso Meu Sistema Lucrativo\Projetos Pessoais\AgendaPro\obj\Debug\net9.0\compressed\0kwm917bhr-61n19gt1b8.gz
 C:\Users\lucia\OneDrive\Cursos\Curso Meu Sistema Lucrativo\Projetos Pessoais\AgendaPro\obj\Debug\net9.0\compressed\y5qylwwcmx-xtxxf3hu2r.gz
 C:\Users\lucia\OneDrive\Cursos\Curso Meu Sistema Lucrativo\Projetos Pessoais\AgendaPro\obj\Debug\net9.0\compressed\dwvgstdq6s-bqjiyaj88i.gz
@@ -405,4 +406,3 @@ C:\Users\lucia\OneDrive\Cursos\Curso Meu Sistema Lucrativo\Projetos Pessoais\Age
 C:\Users\lucia\OneDrive\Cursos\Curso Meu Sistema Lucrativo\Projetos Pessoais\AgendaPro\obj\Debug\net9.0\AgendaPro.pdb
 C:\Users\lucia\OneDrive\Cursos\Curso Meu Sistema Lucrativo\Projetos Pessoais\AgendaPro\obj\Debug\net9.0\AgendaPro.genruntimeconfig.cache
 C:\Users\lucia\OneDrive\Cursos\Curso Meu Sistema Lucrativo\Projetos Pessoais\AgendaPro\obj\Debug\net9.0\ref\AgendaPro.dll
-C:\Users\lucia\OneDrive\Cursos\Curso Meu Sistema Lucrativo\Projetos Pessoais\AgendaPro\obj\Debug\net9.0\compressed\okfdjnu93c-x1290dmsdq.gz
