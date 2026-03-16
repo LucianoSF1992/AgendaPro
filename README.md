@@ -127,6 +127,7 @@ AgendaPro
 
 ```markdown
 # 🗄️ Estrutura do Banco de Dados
+```
 
 Principais entidades do sistema:
 
@@ -141,7 +142,7 @@ Relacionamentos principais:
 - Um **cliente** pode possuir vários **agendamentos**
 - Um **profissional** pode possuir vários **agendamentos**
 - Um **serviço** pode estar associado a vários **agendamentos**
-```
+
 
 
 # 🚀 Como executar o projeto
