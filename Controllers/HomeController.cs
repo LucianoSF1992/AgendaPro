@@ -13,6 +13,5 @@ namespace AgendaPro.Controllers
 
             return View();
         }
-
     }
 }
