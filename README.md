@@ -169,14 +169,15 @@ O projeto está sendo desenvolvido de forma incremental, com novas funcionalidad
 - [x] Personalização das páginas do ASP.NET Identity
 
 ## 📊 Etapa 5 — Dashboard
-- [ ] Visualização diária
-- [ ] Filtro por profissional
-- [ ] Estatísticas de atendimentos
+- [X] Visualização diária
+- [X] Filtro por profissional
+- [X] Estatísticas de atendimentos
 
-## 🕘 Etapa 6 — Histórico
-- [ ] Histórico de agendamentos
-- [ ] Filtros por cliente
-- [ ] Filtros por profissional
+## 🕘 Etapa 6 — Relatórios e visão gerencial
+- [X] Relatório por período
+- [X] Serviços mais agendados
+- [X] Desempenho por profissional
+- [X] Faturamento estimado
 
 ## 🚀 Etapa 7 — Deploy
 - [ ] Deploy na Hostinger

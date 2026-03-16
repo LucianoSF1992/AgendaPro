@@ -1,0 +1,211 @@
+@model AgendaPro.ViewModels.RelatorioViewModel
+
+@{
+    ViewData["Title"] = "Relatórios";
+}
+
+<section class="py-2">
+    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 mb-4">
+        <div>
+            <span class="badge bg-primary-subtle text-primary mb-2 px-3 py-2 rounded-pill">
+                Visão gerencial
+            </span>
+            <h1 class="mb-1">Relatórios</h1>
+            <p class="text-muted mb-0">
+                Acompanhe indicadores por período, serviços mais agendados, desempenho por profissional e faturamento
+                estimado.
+            </p>
+        </div>
+    </div>
+
+    @if (TempData["Erro"] != null)
+    {
+        <div class="alert alert-danger mb-4">
+            @TempData["Erro"]
+        </div>
+    }
+
+    <div class="card border-0 shadow-sm rounded-4 mb-4">
+        <div class="card-body p-4">
+            <form method="get" asp-action="Index" class="row g-3 align-items-end">
+                <div class="col-md-4">
+                    <label asp-for="DataInicial" class="form-label fw-semibold"></label>
+                    <input asp-for="DataInicial" type="date" class="form-control" />
+                </div>
+
+                <div class="col-md-4">
+                    <label asp-for="DataFinal" class="form-label fw-semibold"></label>
+                    <input asp-for="DataFinal" type="date" class="form-control" />
+                </div>
+
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">
+                        Filtrar
+                    </button>
+                </div>
+
+                <div class="col-auto">
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        Limpar filtro
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-4">
+        <div class="col-6 col-xl-3">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <div class="text-muted small mb-2">Total de agendamentos</div>
+                    <div class="display-6 fw-bold">@Model.TotalAgendamentos</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-xl-3">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <div class="text-muted small mb-2">Agendados</div>
+                    <div class="display-6 fw-bold text-warning">@Model.TotalAgendados</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-xl-3">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <div class="text-muted small mb-2">Concluídos</div>
+                    <div class="display-6 fw-bold text-success">@Model.TotalConcluidos</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-xl-3">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <div class="text-muted small mb-2">Cancelados</div>
+                    <div class="display-6 fw-bold text-danger">@Model.TotalCancelados</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-4">
+        <div class="col-xl-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <div class="text-muted small mb-2">Faturamento estimado</div>
+                    <div class="display-6 fw-bold text-success">
+                        @Model.FaturamentoEstimado.ToString("C")
+                    </div>
+                    <p class="text-muted small mb-0 mt-2">
+                        Considera apenas agendamentos concluídos no período selecionado.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-8">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-3">Resumo do período</h5>
+                    <p class="text-muted mb-2">
+                        <strong>Período analisado:</strong>
+                        @Model.DataInicial.ToString("dd/MM/yyyy") até @Model.DataFinal.ToString("dd/MM/yyyy")
+                    </p>
+                    <p class="text-muted mb-0">
+                        Use este relatório para acompanhar volume de atendimentos, conversão em serviços concluídos e
+                        desempenho da operação.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-xl-6">
+            <div class="card border-0 shadow-sm rounded-4 h-100">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-3">Serviços mais agendados</h5>
+
+                    @if (Model.ServicosMaisAgendados.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover align-middle mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Serviço</th>
+                                        <th class="text-center">Agendamentos</th>
+                                        <th class="text-center">Concluídos</th>
+                                        <th class="text-end">Valor gerado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.ServicosMaisAgendados)
+                                    {
+                                        <tr>
+                                            <td>@item.NomeServico</td>
+                                            <td class="text-center">@item.QuantidadeAgendamentos</td>
+                                            <td class="text-center">@item.QuantidadeConcluidos</td>
+                                            <td class="text-end">@item.ValorPotencial.ToString("C")</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info mb-0">
+                            Nenhum dado de serviço encontrado no período informado.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6">
+            <div class="card border-0 shadow-sm rounded-4 h-100">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-3">Desempenho por profissional</h5>
+
+                    @if (Model.DesempenhoProfissionais.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover align-middle mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Profissional</th>
+                                        <th class="text-center">Atendimentos</th>
+                                        <th class="text-center">Concluídos</th>
+                                        <th class="text-center">Cancelados</th>
+                                        <th class="text-end">Faturamento</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.DesempenhoProfissionais)
+                                    {
+                                        <tr>
+                                            <td>@item.NomeProfissional</td>
+                                            <td class="text-center">@item.QuantidadeAtendimentos</td>
+                                            <td class="text-center">@item.QuantidadeConcluidos</td>
+                                            <td class="text-center">@item.QuantidadeCancelados</td>
+                                            <td class="text-end">@item.FaturamentoEstimado.ToString("C")</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info mb-0">
+                            Nenhum dado de profissional encontrado no período informado.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
