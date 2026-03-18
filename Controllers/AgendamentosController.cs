@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using AgendaPro.Data;
 using AgendaPro.Models;
 using AgendaPro.ViewModels;
@@ -8,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AgendaPro.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin,Profissional")]
     public class AgendamentosController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,10 +21,21 @@ namespace AgendaPro.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var agendamentos = await _context.Agendamentos
+            var usuarioId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var ehAdmin = User.IsInRole("Admin");
+
+            var query = _context.Agendamentos
                 .Include(a => a.Cliente)
                 .Include(a => a.Servico)
                 .Include(a => a.Profissional)
+                .AsQueryable();
+
+            if (!ehAdmin)
+            {
+                query = query.Where(a => a.ProfissionalId == usuarioId);
+            }
+
+            var agendamentos = await query
                 .OrderBy(a => a.Data)
                 .ThenBy(a => a.HoraInicio)
                 .ToListAsync();
@@ -31,6 +43,7 @@ namespace AgendaPro.Controllers
             return View(agendamentos);
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create()
         {
             var vm = new AgendamentoFormViewModel();
@@ -40,6 +53,7 @@ namespace AgendaPro.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(AgendamentoFormViewModel vm)
         {
             await CarregarCombosAsync(vm);
@@ -87,6 +101,7 @@ namespace AgendaPro.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id)
         {
             var agendamento = await _context.Agendamentos.FindAsync(id);
@@ -112,6 +127,7 @@ namespace AgendaPro.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, AgendamentoFormViewModel vm)
         {
             if (id != vm.Id)
@@ -165,11 +181,15 @@ namespace AgendaPro.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Profissional")]
         public async Task<IActionResult> AtualizarStatus(int id, string status)
         {
             var agendamento = await _context.Agendamentos.FindAsync(id);
             if (agendamento == null)
                 return NotFound();
+
+            if (!UsuarioPodeAcessarAgendamento(agendamento))
+                return Forbid();
 
             var statusNormalizado = NormalizarStatus(status);
             var statusValidos = new[] { "Agendado", "Concluído", "Cancelado" };
@@ -198,9 +218,13 @@ namespace AgendaPro.Controllers
             if (agendamento == null)
                 return NotFound();
 
+            if (!UsuarioPodeAcessarAgendamento(agendamento))
+                return Forbid();
+
             return View(agendamento);
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var agendamento = await _context.Agendamentos
@@ -217,6 +241,7 @@ namespace AgendaPro.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var agendamento = await _context.Agendamentos.FindAsync(id);
@@ -275,6 +300,15 @@ namespace AgendaPro.Controllers
                 horaInicio < a.HoraFim &&
                 horaFim > a.HoraInicio
             );
+        }
+
+        private bool UsuarioPodeAcessarAgendamento(Agendamento agendamento)
+        {
+            if (User.IsInRole("Admin"))
+                return true;
+
+            var usuarioId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return !string.IsNullOrWhiteSpace(usuarioId) && agendamento.ProfissionalId == usuarioId;
         }
 
         private string NormalizarStatus(string? status)

@@ -1,10 +1,10 @@
 using AgendaPro.Data;
-using AgendaPro.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using AgendaPro.Data.Seed;
-using Microsoft.AspNetCore.Identity.UI.Services;
+using AgendaPro.Models;
 using AgendaPro.Services;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,11 +19,12 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
 
-    options.Password.RequireDigit = false;
-    options.Password.RequireLowercase = false;
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
     options.Password.RequireUppercase = false;
     options.Password.RequireNonAlphanumeric = false;
-    options.Password.RequiredLength = 4;
+    options.Password.RequiredLength = 6;
+    options.Password.RequiredUniqueChars = 1;
 })
 .AddEntityFrameworkStores<ApplicationDbContext>()
 .AddDefaultTokenProviders();

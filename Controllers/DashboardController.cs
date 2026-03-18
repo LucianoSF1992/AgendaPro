@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AgendaPro.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin,Profissional")]
     public class DashboardController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -41,7 +41,7 @@ namespace AgendaPro.Controllers
                 })
                 .ToListAsync();
 
-            IQueryable<Models.Agendamento> query = _context.Agendamentos
+            IQueryable<AgendaPro.Models.Agendamento> query = _context.Agendamentos
                 .AsNoTracking()
                 .Include(a => a.Cliente)
                 .Include(a => a.Servico)
