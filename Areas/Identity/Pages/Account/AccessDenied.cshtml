@@ -24,9 +24,13 @@
                         <a asp-controller="Home" asp-action="Index" class="btn btn-primary px-4">
                             Ir para o início
                         </a>
-                        <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-secondary px-4">
-                            Ir para o dashboard
-                        </a>
+
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                            <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-secondary px-4">
+                                Ir para o dashboard
+                            </a>
+                        }
                     </div>
                 </div>
             </div>

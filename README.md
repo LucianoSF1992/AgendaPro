@@ -227,7 +227,7 @@ O projeto está sendo desenvolvido de forma incremental, com novas funcionalidad
 - [X] Revisão geral de permissões e acessos
 - [X] Testes completos dos fluxos principais
 - [X] Revisão visual e responsividade
-- [ ] Tratamento de erros e mensagens
+- [X] Tratamento de erros e mensagens
 - [ ] Conferência de connection string e appsettings de produção
 
 ## 🚀 Etapa 8 — Deploy

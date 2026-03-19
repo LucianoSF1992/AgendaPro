@@ -91,6 +91,7 @@
 
     <div class="agendapro-page">
         <main role="main" class="container py-4">
+            <partial name="_Alerts" />
             @RenderBody()
         </main>
     </div>
@@ -107,4 +108,5 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

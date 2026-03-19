@@ -1,0 +1,38 @@
+@{
+    var sucesso = TempData["Sucesso"] as string;
+    var erro = TempData["Erro"] as string;
+    var aviso = TempData["Aviso"] as string;
+    var info = TempData["Info"] as string;
+}
+
+@if (!string.IsNullOrWhiteSpace(sucesso))
+{
+    <div class="alert alert-success alert-dismissible fade show rounded-3 shadow-sm" role="alert">
+        @sucesso
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+    </div>
+}
+
+@if (!string.IsNullOrWhiteSpace(erro))
+{
+    <div class="alert alert-danger alert-dismissible fade show rounded-3 shadow-sm" role="alert">
+        @erro
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+    </div>
+}
+
+@if (!string.IsNullOrWhiteSpace(aviso))
+{
+    <div class="alert alert-warning alert-dismissible fade show rounded-3 shadow-sm" role="alert">
+        @aviso
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+    </div>
+}
+
+@if (!string.IsNullOrWhiteSpace(info))
+{
+    <div class="alert alert-info alert-dismissible fade show rounded-3 shadow-sm" role="alert">
+        @info
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+    </div>
+}
