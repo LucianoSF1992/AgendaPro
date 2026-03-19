@@ -10,6 +10,7 @@ obj/
 
 # Logs
 *.log
+logs/
 
 # VSCode
 .vscode/
@@ -20,7 +21,7 @@ obj/
 # Rider
 .idea/
 
-# Node modules (caso use futuramente)
+# Node modules
 node_modules/
 
 # Environment variables
@@ -35,10 +36,20 @@ Thumbs.db
 
 # ASP.NET secrets
 secrets.json
-appsettings.Development.json
 
-# EF Core migrations snapshot temporário
+# AppSettings (importante)
+appsettings.Development.json
+appsettings.*.json
+!appsettings.json
+
+# Banco local
 *.db
+*.mdf
+*.ldf
+
+# Certificados
+*.pfx
+*.pem
 
 # Coverage
 coverage/
