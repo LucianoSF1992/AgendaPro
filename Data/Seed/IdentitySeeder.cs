@@ -34,7 +34,7 @@ namespace AgendaPro.Data.Seed
                     EmailConfirmed = true
                 };
 
-                var createAdminResult = await userManager.CreateAsync(adminUser, "admin");
+                var createAdminResult = await userManager.CreateAsync(adminUser, "Admin@123");
 
                 if (!createAdminResult.Succeeded)
                 {
@@ -63,7 +63,7 @@ namespace AgendaPro.Data.Seed
                     EmailConfirmed = true
                 };
 
-                var createProfissionalResult = await userManager.CreateAsync(profissionalUser, "123456");
+                var createProfissionalResult = await userManager.CreateAsync(profissionalUser, "Prof@123");
 
                 if (!createProfissionalResult.Succeeded)
                 {

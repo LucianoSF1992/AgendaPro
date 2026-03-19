@@ -96,7 +96,6 @@ Permitir que empresas ou profissionais organizem seus agendamentos de serviços,
 
 ---
 
-```markdown
 
 # 🔑 Acesso para Testes
 
@@ -104,13 +103,12 @@ Para facilitar a avaliação do sistema, utilize os seguintes usuários:
 
 ## 👑 Admin
 - **Email:** admin@agenda.com  
-- **Senha:** 123456  
+- **Senha:** Admin@123 
 
 ## 👨‍🔧 Profissional
 - **Email:** profissional@agenda.com  
-- **Senha:** 123456  
+- **Senha:** Prof@123
 
-```
 
 > ⚠️ Estes usuários são criados automaticamente pelo sistema via seed.
 
@@ -253,10 +251,10 @@ O projeto está sendo desenvolvido de forma incremental, com novas funcionalidad
 - [X] Conferência de connection string e appsettings de produção
 
 ## 🚀 Etapa 8 — Deploy
-- [ ] Deploy na Hostinger
-- [ ] Configuração de subdomínio
-- [ ] Configuração de banco em produção
-- [ ] Publicação e testes em produção
+- [X] Deploy na Hostinger
+- [X] Configuração de subdomínio
+- [X] Configuração de banco em produção
+- [X] Publicação e testes em produção
 
 ## 🌱 Etapa 9 — Evoluções avançadas
 - [ ] Calendário mensal/semanal
