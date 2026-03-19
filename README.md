@@ -15,7 +15,11 @@ O sistema permite que empresas ou profissionais organizem seus atendimentos, ger
 
 # 🖥️ Preview do Sistema
 
-*(Em breve imagens da aplicação)*
+![Dashboard](image.png)
+
+![Tela de Agendamentos](image-1.png)
+
+![Relatórios](image-2.png)
 
 Exemplo de funcionalidades:
 
@@ -91,6 +95,24 @@ Permitir que empresas ou profissionais organizem seus agendamentos de serviços,
 - Atualiza status dos atendimentos
 
 ---
+
+```markdown
+
+# 🔑 Acesso para Testes
+
+Para facilitar a avaliação do sistema, utilize os seguintes usuários:
+
+## 👑 Admin
+- **Email:** admin@agenda.com  
+- **Senha:** 123456  
+
+## 👨‍🔧 Profissional
+- **Email:** profissional@agenda.com  
+- **Senha:** 123456  
+
+```
+
+> ⚠️ Estes usuários são criados automaticamente pelo sistema via seed.
 
 # 📋 Funcionalidades do MVP
 
@@ -184,7 +206,7 @@ http://localhost:5139
 
 📊 Status do Projeto
 
-🚧 Em desenvolvimento
+🚧 Em desenvolvimento (MVP concluído)
 
 O projeto está sendo desenvolvido de forma incremental, com novas funcionalidades sendo adicionadas por etapas.
 
@@ -246,9 +268,9 @@ O projeto está sendo desenvolvido de forma incremental, com novas funcionalidad
 
 🌐 Deploy
 
-O sistema será publicado em:
+O sistema foi publicado em:
 
-agendapro.lucianoferreiradev.com
+https://agendapro.lucianoferreiradev.com
 
 
 # 📚 Aprendizados com o Projeto
