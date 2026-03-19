@@ -226,7 +226,7 @@ O projeto está sendo desenvolvido de forma incremental, com novas funcionalidad
 ## ✅ Etapa 7 — Preparação para produção
 - [X] Revisão geral de permissões e acessos
 - [X] Testes completos dos fluxos principais
-- [ ] Revisão visual e responsividade
+- [X] Revisão visual e responsividade
 - [ ] Tratamento de erros e mensagens
 - [ ] Conferência de connection string e appsettings de produção
 

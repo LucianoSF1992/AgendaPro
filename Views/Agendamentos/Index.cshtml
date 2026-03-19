@@ -19,11 +19,14 @@
             <p class="text-muted mb-0">Acompanhe os horários cadastrados e gerencie os atendimentos do sistema.</p>
         </div>
 
-        <div>
-            <a asp-action="Create" class="btn btn-primary px-4">
-                Novo Agendamento
-            </a>
-        </div>
+        @if (User.IsInRole("Admin"))
+        {
+            <div>
+                <a asp-action="Create" class="btn btn-primary px-4">
+                    Novo Agendamento
+                </a>
+            </div>
+        }
     </div>
 
     @if (TempData["Sucesso"] != null)
@@ -70,7 +73,7 @@
                                     <th>Profissional</th>
                                     <th class="text-center">Status Atual</th>
                                     <th class="text-center">Atualizar Status</th>
-                                    <th class="text-center pe-4" style="width: 220px;">Ações</th>
+                                    <th class="text-center pe-4 agendapro-table-actions" style="width: 220px;">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -110,11 +113,11 @@
                                         </td>
 
                                         <td class="text-center">
-                                            <form asp-action="AtualizarStatus" method="post" class="d-flex justify-content-center gap-2">
+                                            <form asp-action="AtualizarStatus" method="post" class="d-flex flex-column flex-md-row justify-content-center gap-2 agendapro-status-form">
                                                 @Html.AntiForgeryToken()
                                                 <input type="hidden" name="id" value="@item.Id" />
 
-                                                <select name="status" class="form-select form-select-sm" style="max-width: 140px;">
+                                                <select name="status" class="form-select form-select-sm">
                                                     <option value="Agendado" selected="@(item.Status == "Agendado")">Agendado</option>
                                                     <option value="Concluído" selected="@(item.Status == "Concluído" || item.Status == "Concluido")">Concluído</option>
                                                     <option value="Cancelado" selected="@(item.Status == "Cancelado")">Cancelado</option>
@@ -131,12 +134,16 @@
                                                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">
                                                     Detalhes
                                                 </a>
-                                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning">
-                                                    Editar
-                                                </a>
-                                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">
-                                                    Excluir
-                                                </a>
+
+                                                @if (User.IsInRole("Admin"))
+                                                {
+                                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning">
+                                                        Editar
+                                                    </a>
+                                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">
+                                                        Excluir
+                                                    </a>
+                                                }
                                             </div>
                                         </td>
                                     </tr>
