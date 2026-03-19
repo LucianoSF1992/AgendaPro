@@ -228,7 +228,7 @@ O projeto está sendo desenvolvido de forma incremental, com novas funcionalidad
 - [X] Testes completos dos fluxos principais
 - [X] Revisão visual e responsividade
 - [X] Tratamento de erros e mensagens
-- [ ] Conferência de connection string e appsettings de produção
+- [X] Conferência de connection string e appsettings de produção
 
 ## 🚀 Etapa 8 — Deploy
 - [ ] Deploy na Hostinger
