@@ -1,134 +1,150 @@
 # 📅 AgendaPro
 
+🇺🇸 English | [🇧🇷 Português](README.pt-BR.md)
+
 ![.NET](https://img.shields.io/badge/.NET-9-blue)
 ![ASP.NET](https://img.shields.io/badge/ASP.NET-Core-purple)
 ![C#](https://img.shields.io/badge/C%23-Backend-green)
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-Database-red)
-![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
+![Status](https://img.shields.io/badge/status-under%20development-yellow)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
-Sistema web para **gerenciamento de agendamentos de serviços**, desenvolvido com **ASP.NET Core MVC, C# e SQL Server**.
+A **service appointment management web application** built with **ASP.NET Core MVC, C#, and SQL Server**.
 
-O sistema permite que empresas ou profissionais organizem seus atendimentos, gerenciem clientes, serviços e acompanhem o status de cada agendamento de forma simples e eficiente.
+AgendaPro helps companies and service professionals organize appointments, manage customers and services, and track the status of each appointment through a simple and intuitive interface.
 
 ---
 
-# 🖥️ Preview do Sistema
+# 🖥️ System Preview
 
 ![Dashboard](image.png)
 
-![Tela de Agendamentos](image-1.png)
+![Appointments](image-1.png)
 
-![Relatórios](image-2.png)
+![Reports](image-2.png)
 
-Exemplo de funcionalidades:
+Main features:
 
-- Dashboard de atendimentos
-- Cadastro de clientes
-- Cadastro de serviços
-- Cadastro de profissionais
-- Agendamento de serviços
-- Controle de status do atendimento
+- Daily dashboard
+- Customer management
+- Service management
+- Professional management
+- Appointment scheduling
+- Appointment status tracking
 
 ---
 
-# 🎯 Objetivo do Projeto
+# 🎯 Project Goal
 
-Permitir que empresas ou profissionais organizem seus agendamentos de serviços, sabendo:
+The main objective of this project is to provide businesses and professionals with an efficient way to manage service appointments by keeping track of:
 
-- quem será atendido
-- em qual horário
-- por qual profissional
-- qual o serviço
-- qual o status do atendimento
+- who will be served
+- appointment date and time
+- assigned professional
+- requested service
+- appointment status
 
 ---
 
 # ✨ Features
 
-- Autenticação com ASP.NET Core Identity
-- Controle de usuários por perfil (Admin e Profissional)
-- Gestão de clientes
-- Gestão de serviços
-- Gestão de profissionais
-- Criação e edição de agendamentos
-- Controle de conflito de horários
-- Atualização de status do atendimento
-- Dashboard com indicadores do dia
-- Relatórios gerenciais por período
-- Interface responsiva com Bootstrap
+- ASP.NET Core Identity authentication
+- Role-based authorization (Admin & Professional)
+- Customer management
+- Service management
+- Professional management
+- Appointment creation and editing
+- Schedule conflict validation
+- Appointment status updates
+- Daily dashboard with key metrics
+- Management reports by date range
+- Responsive Bootstrap interface
 
-# 🧰 Tecnologias Utilizadas
+---
+
+# 🧰 Technologies
 
 ## Backend
-- **.NET 9**
-- **ASP.NET Core MVC**
-- **C#**
-- **Entity Framework Core**
 
-## Banco de Dados
-- **SQL Server**
+- .NET 9
+- ASP.NET Core MVC
+- C#
+- Entity Framework Core
+
+## Database
+
+- SQL Server
 
 ## Frontend
-- **Razor Views**
-- **Bootstrap 5**
-- **HTML / CSS**
 
-## Ferramentas
-- **Git**
-- **GitHub**
-- **Visual Studio / VS Code**
+- Razor Views
+- Bootstrap 5
+- HTML5
+- CSS3
 
----
+## Tools
 
-# 👥 Tipos de Usuários
-
-## 👑 Admin
-- Gerencia clientes
-- Gerencia serviços
-- Gerencia profissionais
-- Cria e edita agendamentos
-- Visualiza toda a agenda
-
-## 👨‍🔧 Profissional
-- Visualiza seus próprios agendamentos
-- Atualiza status dos atendimentos
+- Git
+- GitHub
+- Visual Studio
+- Visual Studio Code
 
 ---
 
+# 👥 User Roles
 
-# 🔑 Acesso para Testes
+## 👑 Administrator
 
-Para facilitar a avaliação do sistema, utilize os seguintes usuários:
+- Manage customers
+- Manage services
+- Manage professionals
+- Create and edit appointments
+- View the complete schedule
 
-## 👑 Admin
-- **Email:** admin@agenda.com  
-- **Senha:** Admin@123 
+## 👨‍🔧 Professional
 
-## 👨‍🔧 Profissional
-- **Email:** profissional@agenda.com  
-- **Senha:** Prof@123
-
-
-> ⚠️ Estes usuários são criados automaticamente pelo sistema via seed.
-
-# 📋 Funcionalidades do MVP
-
-- Autenticação de usuários com Identity
-- Cadastro de clientes
-- Cadastro de serviços
-- Cadastro de profissionais
-- Criação de agendamentos
-- Controle de status
-- Dashboard de agenda
-- Histórico de atendimentos
-- Layout responsivo
+- View assigned appointments
+- Update appointment status
 
 ---
 
-# 🏗️ Arquitetura do Projeto
+# 🔑 Demo Credentials
 
-O projeto segue o padrão **ASP.NET Core MVC**.
+To simplify evaluation, the following users are automatically created through database seeding.
+
+## 👑 Administrator
+
+**Email:** admin@agenda.com
+
+**Password:** Admin@123
+
+## 👨‍🔧 Professional
+
+**Email:** profissional@agenda.com
+
+**Password:** Prof@123
+
+> ⚠️ These demo accounts are automatically created during application startup.
+
+---
+
+# 📋 MVP Features
+
+- User authentication with ASP.NET Core Identity
+- Customer management
+- Service management
+- Professional management
+- Appointment scheduling
+- Appointment status tracking
+- Dashboard
+- Appointment history
+- Responsive layout
+
+---
+
+# 🏗️ Project Architecture
+
+The project follows the **ASP.NET Core MVC** architecture.
 
 ```text
 AgendaPro
@@ -142,164 +158,185 @@ AgendaPro
 ├── Views
 ├── wwwroot
 └── Program.cs
-
 ```
 
-```markdown
-# 🗄️ Estrutura do Banco de Dados
-```
+---
 
-Principais entidades do sistema:
+# 🗄️ Database Structure
 
-- **Clientes**
-- **Serviços**
-- **Profissionais**
-- **Agendamentos**
-- **Usuários (Identity)**
+Main entities:
 
-Relacionamentos principais:
+- Customers
+- Services
+- Professionals
+- Appointments
+- Users (ASP.NET Core Identity)
 
-- Um **cliente** pode possuir vários **agendamentos**
-- Um **profissional** pode possuir vários **agendamentos**
-- Um **serviço** pode estar associado a vários **agendamentos**
+Relationships:
 
+- One customer can have multiple appointments.
+- One professional can have multiple appointments.
+- One service can be associated with multiple appointments.
 
+---
 
-# 🚀 Como executar o projeto
+# 🚀 Running the Project
 
-### 1️⃣ Clonar o repositório
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/LucianoSF1992/AgendaPro.git
-
 ```
 
-2️⃣ Entrar na pasta do projeto
+### 2. Navigate to the project folder
 
 ```bash
 cd AgendaPro
 ```
 
-3️⃣ Restaurar dependências
+### 3. Restore dependencies
 
 ```bash
 dotnet restore
 ```
 
-4️⃣ Aplicar migrations
+### 4. Apply migrations
 
 ```bash
 dotnet ef database update
 ```
 
-5️⃣ Executar o projeto
+### 5. Run the application
 
 ```bash
 dotnet run
 ```
 
-O sistema será executado em uma URL local, como por exemplo:
+The application will be available at a local address similar to:
 
+```
 http://localhost:5139
+```
 
-📊 Status do Projeto
+---
 
-🚧 Em desenvolvimento (MVP concluído)
+# 📊 Project Status
 
-O projeto está sendo desenvolvido de forma incremental, com novas funcionalidades sendo adicionadas por etapas.
+🚧 **Under Development (MVP Completed)**
 
-# 📌 Roadmap do Projeto
+The project is being developed incrementally, with new features added over time.
 
-## 🚧 Etapa 1 — Estrutura inicial
-- [x] Estrutura inicial do projeto
-- [x] Configuração do banco de dados
-- [x] Sistema de autenticação
+---
 
-## 📋 Etapa 2 — Cadastros
-- [x] Cadastro de clientes
-- [x] Cadastro de serviços
-- [x] Cadastro de profissionais
+# 📌 Project Roadmap
 
-## 📅 Etapa 3 — Agendamentos
-- [x] Criação de agendamentos
-- [x] Controle de conflito de horários
-- [x] Atualização de status
+## 🚧 Phase 1 — Initial Setup
 
-## 🎨 Etapa 4 — Interface e experiência
-- [x] Agrupamento de agendamentos por data
-- [x] Exibição visual de status com badges
-- [x] Destaque para agendamentos passados
-- [x] Personalização do layout global
-- [x] Personalização das páginas do ASP.NET Identity
+- [x] Project structure
+- [x] Database configuration
+- [x] Authentication system
 
-## 📊 Etapa 5 — Dashboard
-- [x] Visualização diária
-- [x] Filtro por profissional
-- [x] Estatísticas de atendimentos
+## 📋 Phase 2 — Management Modules
 
-## 🕘 Etapa 6 — Relatórios e visão gerencial
-- [x] Relatório por período
-- [x] Serviços mais agendados
-- [x] Desempenho por profissional
-- [x] Faturamento estimado
+- [x] Customer management
+- [x] Service management
+- [x] Professional management
 
-## ✅ Etapa 7 — Preparação para produção
-- [X] Revisão geral de permissões e acessos
-- [X] Testes completos dos fluxos principais
-- [X] Revisão visual e responsividade
-- [X] Tratamento de erros e mensagens
-- [X] Conferência de connection string e appsettings de produção
+## 📅 Phase 3 — Scheduling
 
-## 🚀 Etapa 8 — Deploy
-- [X] Deploy na Hostinger
-- [X] Configuração de subdomínio
-- [X] Configuração de banco em produção
-- [X] Publicação e testes em produção
+- [x] Appointment creation
+- [x] Schedule conflict validation
+- [x] Status updates
 
-## 🌱 Etapa 9 — Evoluções avançadas
-- [ ] Calendário mensal/semanal
-- [ ] Bloqueio de horários
-- [ ] Edição rápida da agenda
-- [ ] Exportação PDF/Excel
-- [ ] Confirmação por e-mail
-- [ ] Controle de permissões mais refinado
+## 🎨 Phase 4 — User Interface
 
-🌐 Deploy
+- [x] Appointment grouping by date
+- [x] Status badges
+- [x] Highlight past appointments
+- [x] Global layout customization
+- [x] ASP.NET Identity UI customization
 
-O sistema foi publicado em:
+## 📊 Phase 5 — Dashboard
+
+- [x] Daily overview
+- [x] Professional filtering
+- [x] Appointment statistics
+
+## 🕘 Phase 6 — Reports
+
+- [x] Date range reports
+- [x] Most requested services
+- [x] Professional performance
+- [x] Estimated revenue
+
+## ✅ Phase 7 — Production Readiness
+
+- [x] Permission review
+- [x] End-to-end testing
+- [x] Responsive design improvements
+- [x] Error handling
+- [x] Production configuration review
+
+## 🚀 Phase 8 — Deployment
+
+- [x] Hostinger deployment
+- [x] Subdomain configuration
+- [x] Production database setup
+- [x] Production validation
+
+## 🌱 Phase 9 — Future Improvements
+
+- [ ] Monthly/Weekly calendar
+- [ ] Time slot blocking
+- [ ] Quick appointment editing
+- [ ] PDF/Excel export
+- [ ] Email confirmations
+- [ ] Advanced permission management
+
+---
+
+# 🌐 Live Demo
+
+The application is available at:
 
 https://agendapro.lucianoferreiradev.com
 
+---
 
-# 📚 Aprendizados com o Projeto
+# 📚 What I Learned
 
-Durante o desenvolvimento deste projeto foram aplicados conceitos importantes como:
+During the development of this project, I applied and improved my knowledge of:
 
-- Arquitetura MVC  
-- ASP.NET Core Identity  
-- Entity Framework Core  
-- Relacionamentos entre entidades  
-- ViewModels  
-- Boas práticas de organização de código  
-- Controle de versionamento com Git  
+- ASP.NET Core MVC
+- ASP.NET Core Identity
+- Entity Framework Core
+- Entity relationships
+- ViewModels
+- Clean project organization
+- Git version control
+- Role-based authorization
+- Responsive UI development
 
 ---
 
-# 👨‍💻 Autor
+# 👨‍💻 Author
 
 **Luciano Silva Ferreira**
 
-Desenvolvedor Full Stack com foco em **.NET e ASP.NET Core**
+Full Stack Software Developer focused on **.NET** and **ASP.NET Core**.
 
 ---
 
-# 🔗 Contato
+# 🔗 Contact
 
-🌐 **Portfólio**  
-https://lucianoferreiradev.com  
+🌐 **Portfolio**
 
-💼 **LinkedIn**  
-https://www.linkedin.com/in/lucianoferreira92/  
+https://www.lucianoferreiradev.com
 
-💻 **GitHub**  
+💼 **LinkedIn**
+
+https://www.linkedin.com/in/lucianoferreira92/
+
+💻 **GitHub**
+
 https://github.com/LucianoSF1992
